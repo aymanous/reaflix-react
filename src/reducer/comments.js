@@ -1,0 +1,9 @@
+import { COMMENT_LIST_COMPLETE } from '../actions/videos';
+
+export default function (state = [], action) {
+	switch (action.type) {
+		case COMMENT_LIST_COMPLETE:
+			return action.comments;
+	}
+	return state;
+}
