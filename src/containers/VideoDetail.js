@@ -9,7 +9,7 @@ import {
 	postLike,
 	postDislike,
 } from '../actions/videos';
-import { push } from '../actions/navigation';
+import { Link } from 'react-router-dom';
 
 class VideoDetail extends Component {
 	player = null;
@@ -21,11 +21,11 @@ class VideoDetail extends Component {
 	}
 
 	fetchDetail() {
-		this.props.fetchVideo(this.props.params.id);
+		this.props.fetchVideo(this.props.match.params.id);
 	}
 
 	fetchComments() {
-		this.props.fetchComments(this.props.params.id);
+		this.props.fetchComments(this.props.match.params.id);
 	}
 
 	render() {
@@ -36,14 +36,14 @@ class VideoDetail extends Component {
 		const { title, description, file, likes, dislikes } = video;
 		return (
 			<div className="videoDetail">
-				<button className="backButton" onClick={() => this.props.push('list')}>
+				<Link to="/" className="backButton">
 					&lt; Retour
-				</button>
+				</Link>
 				<video
 					style={{ width: '100%', backgroundColor: 'black' }}
 					height="400"
 					controls
-					src={'./uploads/' + file}
+					src={'/uploads/' + file}
 					ref={el => (this.player = el)}
 				></video>
 				<button onClick={() => this.player.play()}>play</button>
@@ -75,15 +75,15 @@ class VideoDetail extends Component {
 	}
 
 	handleLikeClick() {
-		this.props.postLike(this.props.params.id);
+		this.props.postLike(this.props.match.params.id);
 	}
 
 	handleDislikeClick() {
-		this.props.postDislike(this.props.params.id);
+		this.props.postDislike(this.props.match.params.id);
 	}
 
 	handleCommentSubmit(newComment) {
-		return this.props.postComment(this.props.params.id, newComment);
+		return this.props.postComment(this.props.match.params.id, newComment);
 	}
 }
 export default connect(
@@ -91,5 +91,5 @@ export default connect(
 		video: state.video,
 		comments: state.comments,
 	}),
-	{ fetchVideo, fetchComments, postComment, postLike, postDislike, push }
+	{ fetchVideo, fetchComments, postComment, postLike, postDislike }
 )(VideoDetail);

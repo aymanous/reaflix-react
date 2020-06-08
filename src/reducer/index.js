@@ -1,17 +1,18 @@
 import { combineReducers } from 'redux';
+import { connectRouter } from 'connected-react-router';
 import video from './video';
 import comments from './comments';
 import newVideo from './newVideo';
 import videos from './videos';
-import navigation from './navigation';
 
-export default combineReducers({
-	video,
-	comments,
-	newVideo,
-	videos,
-	navigation,
-});
+export default history =>
+	combineReducers({
+		router: connectRouter(history),
+		video,
+		comments,
+		newVideo,
+		videos,
+	});
 
 // Pour des "petits" projets,
 // on peut faire un reducer en un seul fichier,

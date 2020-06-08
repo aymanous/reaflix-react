@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { postVideo } from '../actions/videos';
-import { push } from '../actions/navigation';
+import { push } from 'connected-react-router';
 import { connect } from 'react-redux';
 
 class VideoForm extends Component {
@@ -16,7 +16,7 @@ class VideoForm extends Component {
 				this.descriptionInput.value,
 				this.thumbnailInput.value
 			)
-			.then(({ id }) => this.props.push('detail', { id }));
+			.then(({ id }) => this.props.push(`/videos/${id}`));
 	}
 
 	render() {

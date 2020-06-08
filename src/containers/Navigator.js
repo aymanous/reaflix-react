@@ -3,22 +3,17 @@ import VideoList from './VideoList';
 import VideoDetail from './VideoDetail';
 import VideoForm from './VideoForm';
 import { connect } from 'react-redux';
+import { Switch, Route } from 'react-router';
 
 class Navigator extends React.Component {
 	render() {
-		const { screen, params } = this.props.navigation;
-		switch (screen) {
-			case 'list':
-				return <VideoList params={params} />;
-				break;
-			case 'detail':
-				return <VideoDetail params={params} />;
-				break;
-			case 'form':
-				return <VideoForm params={params} />;
-				break;
-		}
-		return null;
+		return (
+			<Switch>
+				<Route exact path="/" component={VideoList} />
+				<Route exact path="/videos/new" component={VideoForm} />
+				<Route exact path="/videos/:id" component={VideoDetail} />
+			</Switch>
+		);
 	}
 }
 

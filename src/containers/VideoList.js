@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import VideoThumbnail from '../components/VideoThumbnail';
 import { fetchVideos } from '../actions/videos';
-import { push } from '../actions/navigation';
 
 class VideoList extends Component {
 	componentDidMount() {
@@ -19,13 +18,7 @@ class VideoList extends Component {
 				</header>
 				<div className={classNames}>
 					{videos.map(video => (
-						<VideoThumbnail
-							onClick={() =>
-								this.props.dispatch(push('detail', { id: video.id }))
-							}
-							video={video}
-							key={video.id}
-						/>
+						<VideoThumbnail video={video} key={video.id} />
 					))}
 				</div>
 			</div>
