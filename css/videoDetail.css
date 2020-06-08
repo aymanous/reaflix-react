@@ -1,5 +1,6 @@
 .videoDetail video {
 }
+.videoDetail .backButton,
 .videoDetail > button {
 	background: #eee;
 	border: none;
@@ -7,7 +8,9 @@
 	color: #999999;
 	font-size: 16px;
 	font-family: Oswald;
+	padding: 1px 6px;
 }
+.videoDetail .backButton:hover,
 .videoDetail > button:hover {
 	cursor: pointer;
 	color: #fff;
@@ -15,6 +18,8 @@
 }
 .videoDetail .backButton {
 	margin-bottom: 5px;
+	display: inline-block;
+	text-decoration: none;
 }
 .videoDetail .backButton:hover {
 	background: #333;

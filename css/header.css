@@ -63,11 +63,11 @@ body > header .mainMenu a {
 	border-bottom: 2px #cb0a23 solid;
 	transform: translateY(2px);
 }
-body > header .mainMenu a.selected,
+body > header .mainMenu a.active,
 body > header .mainMenu a:hover {
 	color: #f82b23bb;
 	transform: translateY(0);
 }
-body > header .mainMenu a.selected {
+body > header .mainMenu a.active {
 	color: #f82b23;
 }
