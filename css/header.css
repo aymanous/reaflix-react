@@ -7,8 +7,8 @@ body > header {
 	z-index: 99;
 	height: 58px;
 	top: 0;
-	background-color: #fff;
-	color: #000;
+    background-color: #141414;
+    color: #fff;
 }
 body > header > nav {
 	display: flex;
@@ -26,8 +26,8 @@ body > header > nav > h1 {
 body > header > nav > h1.logo:before {
 	content: '';
 	display: inline-block;
-	width: 50px;
-	height: 25px;
+	width: 120px;
+    height: 45px;
 	background-image: url('../images/logo.png');
 	background-size: contain;
 	background-position: center;
@@ -55,19 +55,19 @@ body > header .mainMenu a {
 	align-items: center;
 	padding: 0 30px;
 	padding-bottom: 2px;
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: 200;
 	text-decoration: none;
-	color: black;
+	color: white;
 	transition: all .2s ease;
-	border-bottom: 2px #cb0a23 solid;
+	border: 2px #000 solid;
 	transform: translateY(2px);
 }
 body > header .mainMenu a.active,
 body > header .mainMenu a:hover {
-	color: #f82b23bb;
+	background: #f82b23bb;
 	transform: translateY(0);
 }
 body > header .mainMenu a.active {
-	color: #f82b23;
+	color: white;
 }

@@ -7,12 +7,17 @@ export default function Menu() {
 		<>
 			<li>
 				<NavLink exact to="/">
-					Vidéos
+					Accueil
 				</NavLink>
 			</li>
 			<li>
-				<NavLink exact to="/videos/new">
-					Ajouter
+				<NavLink exact to="/lequipe.fr">
+					L'équipe
+				</NavLink>
+			</li>
+			<li>
+				<NavLink exact to="/choix-technologiques">
+					Choix
 				</NavLink>
 			</li>
 		</>,

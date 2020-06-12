@@ -48,11 +48,11 @@ h1 {
 	margin-left: 5px;
 }
 body > footer {
-	background: #ebebeb;
-	width: 100%;
-	padding: 50px;
-	color: #555;
-	text-align: right;
+	background: #141414;
+    width: 100%;
+    padding: 10px 20px;
+    color: #7b7b7b;
+    text-align: right;
 }
 body > footer a {
 	color: black;
