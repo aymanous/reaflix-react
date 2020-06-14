@@ -1,14 +1,14 @@
 body > header {
 	margin: 0;
-	padding: 0 20px;
+	padding: 0 2rem;
 	width: 100%;
 	display: flex;
 	position: fixed;
 	z-index: 99;
-	height: 58px;
+	height: 4.5rem;
 	top: 0;
-    background-color: #141414;
-    color: #fff;
+	background-color: #141414d6;
+	color: #fff;
 }
 body > header > nav {
 	display: flex;
@@ -21,13 +21,13 @@ body > header > nav > h1 {
 	font-size: 25px;
 	font-family: Oswald;
 	font-weight: normal;
-	letter-spacing: -.05em;
+	letter-spacing: -0.05em;
 }
 body > header > nav > h1.logo:before {
 	content: '';
 	display: inline-block;
-	width: 120px;
-    height: 45px;
+	width: 130px;
+	height: 45px;
 	background-image: url('../images/logo.png');
 	background-size: contain;
 	background-position: center;
@@ -59,8 +59,7 @@ body > header .mainMenu a {
 	font-weight: 200;
 	text-decoration: none;
 	color: white;
-	transition: all .2s ease;
-	border: 2px #000 solid;
+	transition: all 0.2s ease;
 	transform: translateY(2px);
 }
 body > header .mainMenu a.active,

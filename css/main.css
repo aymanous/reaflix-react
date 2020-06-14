@@ -50,7 +50,7 @@ h1 {
 body > footer {
 	background: #141414;
     width: 100%;
-    padding: 10px 20px;
+    /* padding: 10px 20px; */
     color: #7b7b7b;
     text-align: right;
 }

@@ -1,15 +1,15 @@
 {
-  "name": "reactube",
+  "name": "reaflix",
   "version": "1.0.0",
-  "description": "TP du cours react by uidlt.fr",
+  "description": "Netflix mais en React...",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode=production",
     "watch": "webpack --mode=development --watch"
   },
-  "author": "Thomas Fritsch <thomas@uidlt.fr> (https://uidlt.fr)",
-  "homepage": "https://framagit.org/cours-react/",
+  "author": "Théo/Paul/Léandre/Ayman",
+  "homepage": "https://github.com/aymanous/reaflix-react/commits/master",
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -23,8 +23,10 @@
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
+    "bootstrap": "^4.5.0",
     "connected-react-router": "^6.8.0",
     "react": "^16.13.1",
+    "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
     "react-router": "^5.2.0",
