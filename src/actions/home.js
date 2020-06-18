@@ -29,3 +29,12 @@ export function getSliderImages() {
 		dispatch(action);
 	};
 }
+
+// LVL 1 request
+export function searchSeries(search) {
+	fetch('http://api.tvmaze.com/search/shows?q=' + search)
+		.then(response => response.json())
+		.then(data => {
+			return data;
+		});
+}

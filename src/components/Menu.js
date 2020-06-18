@@ -20,6 +20,11 @@ export default function Menu() {
 					Choix
 				</NavLink>
 			</li>
+			<li>
+				<NavLink exact to="/resultats/girls">
+					Recherche
+				</NavLink>
+			</li>
 		</>,
 		document.querySelector('.mainMenu')
 	);

@@ -14,7 +14,7 @@ class Navigator extends React.Component {
 				<Route exact path="/" component={Home} />
 				<Route exact path="/lequipe.fr" component={Team} />
 				<Route exact path="/choix-technologiques" component={TechChoices} />
-				<Route exact path="/resultats:marecherche" component={Results} />
+				<Route exact path="/resultats/:marecherche" component={Results} />
 				<Route exact path="/series/:nomdelaserie-:id" component={Serie} />
 			</Switch>
 		);
