@@ -18,13 +18,13 @@ const SerieThumbnail = ({
 	return (
 		<Link className="linkThumbnail" to={`/series/${name}-${id}`}>
 			<div className="Thumbnail">
-				<div class="imageThumbnail">
+				<div className="imageThumbnail">
 					<img src={image}></img>
 				</div>
-				<h2 class="name">{name}</h2>
-				<p class="title">Premiered : {premiered}</p>
+				<h2 className="name">{name}</h2>
+				<p className="title">Premiered : {premiered}</p>
 				<div>{summary}</div>
-				<p class="average">{average}</p>
+				<p className="average">{average}</p>
 			</div>
 		</Link>
 	);

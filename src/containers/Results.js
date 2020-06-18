@@ -135,7 +135,7 @@ class Results extends Component {
 					className="videoForm"
 					onSubmit={event => this.handleSubmit(event)}
 				>
-					<h2 className="search-title">Search</h2>
+					<h2 className="search-title">Recherche :</h2>
 					<input
 						required
 						type="text"
@@ -153,7 +153,7 @@ class Results extends Component {
 					</select>
 
 					<button type="submit" className="button">
-						Search
+						Rechercher
 					</button>
 				</form>
 
