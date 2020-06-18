@@ -1,0 +1,28 @@
+.card {
+	float: left;
+	width: 25%;
+	padding: 10px;
+}
+
+@media only screen and (max-width: 1000px) {
+	.card {
+		width: 100%;
+		display: block;
+	}
+}
+
+.content {
+	box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.infos {
+	padding: 10px;
+}
+
+.name {
+	text-align: center;
+}
+
+.title {
+	color: grey;
+}
