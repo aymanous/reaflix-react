@@ -147,7 +147,7 @@ class Results extends Component {
 						onChange={this.handleChange}
 						value={this.state.filter}
 					>
-						<option value="pertinance_desc">Pertinance &darr;</option>
+						<option value="pertinance_desc">Pertinence &darr;</option>
 						<option value="ranking_desc">Note &darr;</option>
 						<option value="diffusion_asc">Date de diffusion &uarr;</option>
 					</select>
