@@ -1,48 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getSliderImages } from '../actions/home';
-import { NavLink } from 'react-router-dom';
 
 class Home extends Component {
 	state = {
 		sliderPath: null,
 		sliderIndex: 0,
 	};
-	images = [];
 	searchInput = null;
+	images = [
+		'https://www.demon-media.co.uk/wp-content/uploads/2017/12/Sammie-Hermiston-avengers-vs-justice-league.png',
+		'https://c4.wallpaperflare.com/wallpaper/724/859/726/tv-series-black-background-mr-robot-circuits-wallpaper-preview.jpg',
+		'https://i.imgur.com/uJHiPpX.jpg',
+	];
 
 	componentDidMount() {
-		this.props.getSliderImages();
-		console.log(this.props.images);
-
-		this.images = [
-			{
-				label: 'Hello',
-				src:
-					'https://www.demon-media.co.uk/wp-content/uploads/2017/12/Sammie-Hermiston-avengers-vs-justice-league.png',
-			},
-			{
-				label: 'Hello',
-				src:
-					'https://c4.wallpaperflare.com/wallpaper/724/859/726/tv-series-black-background-mr-robot-circuits-wallpaper-preview.jpg',
-			},
-			{
-				label: 'Hello',
-				src: 'https://i.imgur.com/uJHiPpX.jpg',
-			},
-		];
-
-		// this.images = this.props.images;
-
+		console.log(this.images.length);
 		this.changeImage(
-			this.images[this.state.sliderIndex++ % this.images.length].src
+			this.images[this.state.sliderIndex++ % this.images.length]
 		);
 
 		setInterval(() => {
 			this.changeImage(
-				this.images[this.state.sliderIndex++ % this.images.length].src
+				this.images[this.state.sliderIndex++ % this.images.length]
 			);
-		}, 30000);
+		}, 3000);
 	}
 
 	changeImage(path) {
@@ -53,13 +34,13 @@ class Home extends Component {
 
 	handleNextImgClick() {
 		this.changeImage(
-			this.images[this.state.sliderIndex++ % this.images.length].src
+			this.images[this.state.sliderIndex++ % this.images.length]
 		);
 	}
 
 	handlePreviousImgClick() {
 		this.changeImage(
-			this.images[this.state.sliderIndex-- % this.images.length].src
+			this.images[this.state.sliderIndex-- % this.images.length]
 		);
 	}
 
@@ -114,5 +95,5 @@ export default connect(
 	state => ({
 		images: state.images,
 	}),
-	{ getSliderImages }
+	{}
 )(Home);
