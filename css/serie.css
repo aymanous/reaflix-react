@@ -1,0 +1,55 @@
+.serieCover {
+    margin-left: 10%;
+    display: inline-block;
+    max-width: 20%;
+    vertical-align: top;
+}
+
+.serieDetail {
+    /* background: linear-gradient(rgb(241,241,241), grey); */
+    height: 100%;
+}
+
+.primaryInfos {
+    /* border: 1px solid black; */
+    border-radius: 10px;
+    display: inline-block;
+    width: 50%;
+    margin-left : 10%;
+    background-color: black;
+    padding: 20px;
+    box-shadow: 0 0 2em black;
+    color:white;
+}
+
+.listeEpisode {
+    margin-top: 50px;
+    width : 80%;
+    margin-left: 10%;
+}
+
+.episodeThumbnail {
+    display: flex;
+    /* justify-content: center; */
+    flex-wrap: wrap;
+    width: 90%;
+    background:white;
+    margin: 10px auto;
+    position: relative;
+    /* text-align:center; */
+    border-radius: 10px;
+    box-shadow: 0 0 2em black;
+}
+
+.imageEpisodeThumbnail{
+    margin: 3%;
+    display: inline-block;
+}
+
+.infosEpisode{
+    margin: 1%;
+    margin-left: 3%;
+    /* border: 1px solid black; */
+    display: inline-block;
+    width: 50%;
+}
