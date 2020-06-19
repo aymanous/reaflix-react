@@ -32,4 +32,4 @@ Page de recherche de séries
 ![Page de recherche de serie](images/readme/search.png)
 
 Page de détails d'une série
-![Page de détails d'une série](images/readme/details.png)
+![Page de détails d'une série](images/readme/search.png)
