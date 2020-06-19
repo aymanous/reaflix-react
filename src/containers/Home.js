@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getSliderImages } from '../actions/home';
+import { NavLink } from 'react-router-dom';
 
 class Home extends Component {
 	state = {
 		sliderPath: null,
 		sliderIndex: 0,
 	};
+	images = [];
+	searchInput = null;
 
 	componentDidMount() {
-		// this.props.getSliderImages();
+		this.props.getSliderImages();
+		console.log(this.props.images);
 
-		const images = [
+		this.images = [
 			{
 				label: 'Hello',
 				src:
@@ -28,14 +32,17 @@ class Home extends Component {
 			},
 		];
 
-		this.initSlider(images);
-	}
+		// this.images = this.props.images;
 
-	initSlider(images) {
-		this.changeImage(images[this.state.sliderIndex++ % images.length].src);
+		this.changeImage(
+			this.images[this.state.sliderIndex++ % this.images.length].src
+		);
+
 		setInterval(() => {
-			this.changeImage(images[this.state.sliderIndex++ % images.length].src);
-		}, 10000);
+			this.changeImage(
+				this.images[this.state.sliderIndex++ % this.images.length].src
+			);
+		}, 30000);
 	}
 
 	changeImage(path) {
@@ -45,19 +52,27 @@ class Home extends Component {
 	}
 
 	handleNextImgClick() {
-		this.changeImage(images[this.state.sliderIndex++ % images.length].src);
+		this.changeImage(
+			this.images[this.state.sliderIndex++ % this.images.length].src
+		);
 	}
 
 	handlePreviousImgClick() {
-		this.changeImage(images[this.state.sliderIndex-- % images.length].src);
+		this.changeImage(
+			this.images[this.state.sliderIndex-- % this.images.length].src
+		);
+	}
+
+	handleSubmit(event) {
+		this.setState({ loading: 'is-loading' });
+		event.preventDefault();
+
+		this.props.history.push('/resultats/' + this.SearchInput.value);
 	}
 
 	render() {
-		// const { images } = this.props;
-		// const classNames = `home-slider ${images?.length ? '' : 'is-loading'}`;
-
 		const classNames = `home-slider ${
-			this.state.sliderPath != null ? '' : 'is-loading'
+			this.images.length == 0 ? 'is-loading' : ''
 		}`;
 
 		return (
@@ -70,6 +85,22 @@ class Home extends Component {
 						backgroundRepeat: 'no-repeat',
 					}}
 				></div>
+				<div className="search">
+					<form onSubmit={event => this.handleSubmit(event)}>
+						<h2 className="search-title">Rechercher</h2>
+						<input
+							required
+							type="text"
+							id="search"
+							ref={el => (this.SearchInput = el)}
+						/>
+
+						<button type="submit" className="button">
+							Rechercher
+						</button>
+					</form>
+				</div>
+
 				<div className="slider-nav">
 					<div onClick={() => this.handleNextImgClick()}>⮞</div>
 					<div onClick={() => this.handlePreviousImgClick()}>⮜</div>
