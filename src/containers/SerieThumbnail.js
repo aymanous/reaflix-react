@@ -10,11 +10,7 @@ const SerieThumbnail = ({
 	name = serie.show.name,
 	id = serie.show.id,
 	premiered = serie.show.premiered,
-	summary = serie.show.summary
-		.replace('<p>', '')
-		.replace('<b>', '')
-		.replace('</p>', '')
-		.replace('</b>', ''),
+	summary = serie.show.summary == null ? '' : serie.show.summary,
 	average = serie.show.rating.average == null
 		? 'Pas de note disponible'
 		: serie.show.rating.average + ' / 10',
@@ -27,7 +23,11 @@ const SerieThumbnail = ({
 				</div>
 				<h2 className="name">{name}</h2>
 				<p className="title">Première sortie : {premiered}</p>
-				<div>{summary}</div>
+				<div
+					dangerouslySetInnerHTML={{
+						__html: summary,
+					}}
+				></div>
 				<p className="average">{average}</p>
 			</div>
 		</Link>
