@@ -21,3 +21,6 @@ npx serve -s -l 8000
 ```
 
 # Interface
+
+Page de présentation de l'équipe
+![alt text](https://github.com/aymanous/reaflix-react/blob/master/images/readme/team.png)
