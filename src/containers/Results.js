@@ -11,7 +11,7 @@ class Results extends Component {
 	state = {
 		search: '',
 		series: [],
-		filter: 'pertinance_desc',
+		filter: 'pertinence_desc',
 		loading: 'is-loading',
 	};
 
@@ -22,20 +22,6 @@ class Results extends Component {
 		} else {
 			this.state.search = this.props.match.params.marecherche.toLowerCase();
 		}
-
-		// this.setState({ search: search, loading: 'is-loading' });
-
-		// fetch('http://api.tvmaze.com/search/shows?q=' + search)
-		// 	.then(response => response.json())
-		// 	.then(data => {
-		// 		this.setState({ series: data });
-		// 	})
-		// 	.then(this.filter(this.state.filter))
-		// 	.then(
-		// 		setTimeout(() => {
-		// 			this.setState({ loading: '' });
-		// 		}, 1000)
-		// 	);
 
 		this.fetchSeries(this.props.match.params.marecherche.toLowerCase());
 	}
@@ -51,10 +37,15 @@ class Results extends Component {
 	};
 
 	filter(filter) {
+		console.log('enter in filter');
+		console.log(this.state.filter);
+		if (this.props.series == null) {
+			return;
+		}
 		switch (filter) {
-			case 'pertinance_desc':
+			case 'pertinence_desc':
 				// pertinance desc
-				this.state.series
+				this.props.series
 					.sort(function (a, b) {
 						return (
 							parseFloat(a.score == null ? 0 : a.score) -
@@ -66,7 +57,7 @@ class Results extends Component {
 
 			case 'ranking_desc':
 				// By rating
-				this.state.series
+				this.props.series
 					.sort(function (a, b) {
 						return (
 							parseFloat(
@@ -82,7 +73,7 @@ class Results extends Component {
 
 			case 'diffusion_asc':
 				// by date asc
-				this.state.series.sort(function (a, b) {
+				this.props.series.sort(function (a, b) {
 					return (
 						parseFloat(a.show.premiered == null ? 0 : a.show.premiered) -
 						parseFloat(b.show.premiered == null ? 0 : b.show.premiered)
@@ -105,13 +96,8 @@ class Results extends Component {
 	}
 
 	handleSubmit(event) {
-		this.setState({ loading: 'is-loading' });
+		this.setState({ loading: 'is-loading', search: this.SearchInput.value });
 		event.preventDefault();
-		/*this.props
-			.postVideo(this.SearchInput.value)
-			.then(({ id }) => this.props.push('detail', { id }));*/
-
-		// searchSeries(this.SearchInput.value);
 
 		history.pushState(
 			{},
@@ -120,18 +106,33 @@ class Results extends Component {
 		);
 
 		this.fetchSeries(this.SearchInput.value.toLowerCase());
+	}
 
-		// fetch('http://api.tvmaze.com/search/shows?q=' + this.SearchInput.value)
-		// 	.then(response => response.json())
-		// 	.then(data => {
-		// 		this.setState({ series: data, search: this.SearchInput.value });
-		// 	})
-		// 	.then(this.filter(this.state.filter))
-		// 	.then(
-		// 		setTimeout(() => {
-		// 			this.setState({ loading: '' });
-		// 		}, 1000)
-		// 	);
+	recherche() {
+		return (
+			<form className="videoForm" onSubmit={event => this.handleSubmit(event)}>
+				<h2 className="search-title">Recherche :</h2>
+				<input
+					required
+					type="text"
+					id="search"
+					ref={el => (this.SearchInput = el)}
+				/>
+				<select
+					name="filter"
+					onChange={this.handleChange}
+					value={this.state.filter}
+				>
+					<option value="pertinence_desc">Pertinence &darr;</option>
+					<option value="ranking_desc">Note &darr;</option>
+					<option value="diffusion_asc">Date de diffusion &uarr;</option>
+				</select>
+
+				<button type="submit" className="button">
+					Rechercher
+				</button>
+			</form>
+		);
 	}
 
 	render() {
@@ -139,7 +140,7 @@ class Results extends Component {
 		const { series } = this.props;
 
 		if (!series) {
-			return <div className="results-container is-loading"></div>;
+			return <div className="results-container "></div>;
 		}
 
 		return (
@@ -147,32 +148,7 @@ class Results extends Component {
 				<h1>
 					{series.length} résultats pour "{search.toUpperCase()}"
 				</h1>
-				<form
-					className="videoForm"
-					onSubmit={event => this.handleSubmit(event)}
-				>
-					<h2 className="search-title">Recherche :</h2>
-					<input
-						required
-						type="text"
-						id="search"
-						ref={el => (this.SearchInput = el)}
-					/>
-					<select
-						name="filter"
-						onChange={this.handleChange}
-						value={this.state.filter}
-					>
-						<option value="pertinance_desc">Pertinence &darr;</option>
-						<option value="ranking_desc">Note &darr;</option>
-						<option value="diffusion_asc">Date de diffusion &uarr;</option>
-					</select>
-
-					<button type="submit" className="button">
-						Rechercher
-					</button>
-				</form>
-
+				{this.recherche()}
 				<div className={`results-container`}>
 					{series.map(serie => (
 						<SerieThumbnail serie={serie} key={serie.show.id} />
