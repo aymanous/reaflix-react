@@ -22,5 +22,14 @@ npx serve -s -l 8000
 
 # Interface
 
+Page d'accueil
+![Page d'accueil](images/readme/home.png)
+
 Page de présentation de l'équipe
 ![Page de présentation de l'équipe](images/readme/team.png)
+
+Page de recherche de séries
+![Page de recherche de serie](images/readme/search.png)
+
+Page de détails d'une série
+![Page de détails d'une série](images/readme/details.png)
