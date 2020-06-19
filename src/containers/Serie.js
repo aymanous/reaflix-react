@@ -49,7 +49,7 @@ class Series extends Component {
 						<p>
 							<strong>Rating : </strong>{' '}
 							<b>
-								<font color="#42FF33">{rating.average.toString()}</font>
+								<font color="#42FF33">{rating.average}</font>
 							</b>
 						</p>
 						<p>

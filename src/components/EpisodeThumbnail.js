@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 
 export default function EpisodeThumbnail({
 	episode: { id, name, airdate, summary, image },
+	imageFinale = image == null ? '../images/no_image.jpg' : image.medium,
 }) {
 	return (
 		<div className="episodeThumbnail">
-			<div>
-				<img className="imageEpisodeThumbnail" src={image.medium}></img>
+			<div className="imageEpisodeThumbnail">
+				<img src={imageFinale}></img>
 			</div>
 			<div className="infosEpisode">
 				<h2 className="name">{name}</h2>
