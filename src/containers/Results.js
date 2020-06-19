@@ -130,7 +130,9 @@ class Results extends Component {
 
 		return (
 			<div>
-				<h1>Recherche pour "{search.toUpperCase()}"</h1>
+				<h1>
+					{series.length} résultats pour "{search.toUpperCase()}"
+				</h1>
 				<form
 					className="videoForm"
 					onSubmit={event => this.handleSubmit(event)}
