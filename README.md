@@ -33,3 +33,6 @@ Page de recherche de séries
 
 Page de détails d'une série
 ![Page de détails d'une série](images/readme/serieDetails.png)
+
+Page de présentation des choix techniques
+![Page de présentation des choix techniques](images/readme/techchoices.png)
