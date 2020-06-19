@@ -17,9 +17,18 @@ class TechChoices extends Component {
 					actions et permettre l'utilisation du store.
 				</p>
 				<p>
-					Concernant l'API nous avons suivi les conseils données dans le sujet
-					et nous avons opté pour l'API de TVMaze.
+					Concernant l'API nous avons suivi les conseils donnés dans le sujet et
+					nous avons opté pour l'API de TVMaze.
 				</p>
+				<p>
+					<b>Nous avons utilisé les librairies suivantes:</b>
+				</p>
+				<div className="lib">
+					<p>React: 16.13.1</p>
+					<p>React Routeur: 5.2</p>
+					<p>React Redux : 7.2.0</p>
+				</div>
+
 				<div className="filesOrganisation">
 					<h2>Organisation des fichiers</h2>
 					<p>css</p>

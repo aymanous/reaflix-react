@@ -13,11 +13,18 @@ export default function EpisodeThumbnail({
 			<div className="infosEpisode">
 				<h2 className="name">{name}</h2>
 				<p className="title">Première sortie : {airdate}</p>
-				<div
-					dangerouslySetInnerHTML={{
-						__html: summary,
-					}}
-				></div>
+				<em>
+					Passez votre souris dans le cadre pour afficher la description de
+					l'épisode.
+				</em>
+				<div className="spoilAlert">
+					<div
+						className="summary"
+						dangerouslySetInnerHTML={{
+							__html: summary,
+						}}
+					></div>
+				</div>
 			</div>
 		</div>
 	);
