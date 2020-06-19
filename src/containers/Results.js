@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { searchSeries } from '../actions/home';
 import SerieThumbnail from './SerieThumbnail';
 import { Link, NavLink } from 'react-router-dom';
+import { fetchSeries } from '../actions/home';
 
 class Results extends Component {
 	SearchInput = null;
@@ -17,24 +18,30 @@ class Results extends Component {
 	componentDidMount() {
 		let search;
 		if (this.props.match.params == null) {
-			search = 'girls';
+			this.state.search = 'girls';
 		} else {
-			search = this.props.match.params.marecherche.toLowerCase();
+			this.state.search = this.props.match.params.marecherche.toLowerCase();
 		}
 
-		this.setState({ search: search, loading: 'is-loading' });
+		// this.setState({ search: search, loading: 'is-loading' });
 
-		fetch('http://api.tvmaze.com/search/shows?q=' + search)
-			.then(response => response.json())
-			.then(data => {
-				this.setState({ series: data });
-			})
-			.then(this.filter(this.state.filter))
-			.then(
-				setTimeout(() => {
-					this.setState({ loading: '' });
-				}, 1000)
-			);
+		// fetch('http://api.tvmaze.com/search/shows?q=' + search)
+		// 	.then(response => response.json())
+		// 	.then(data => {
+		// 		this.setState({ series: data });
+		// 	})
+		// 	.then(this.filter(this.state.filter))
+		// 	.then(
+		// 		setTimeout(() => {
+		// 			this.setState({ loading: '' });
+		// 		}, 1000)
+		// 	);
+
+		this.fetchSeries(this.props.match.params.marecherche.toLowerCase());
+	}
+
+	fetchSeries(serieName) {
+		this.props.fetchSeries(serieName).then(this.filter(this.state.filter));
 	}
 
 	handleChange = event => {
@@ -112,21 +119,28 @@ class Results extends Component {
 			'http://localhost:8000/resultats/' + this.SearchInput.value
 		);
 
-		fetch('http://api.tvmaze.com/search/shows?q=' + this.SearchInput.value)
-			.then(response => response.json())
-			.then(data => {
-				this.setState({ series: data, search: this.SearchInput.value });
-			})
-			.then(this.filter(this.state.filter))
-			.then(
-				setTimeout(() => {
-					this.setState({ loading: '' });
-				}, 1000)
-			);
+		this.fetchSeries(this.SearchInput.value.toLowerCase());
+
+		// fetch('http://api.tvmaze.com/search/shows?q=' + this.SearchInput.value)
+		// 	.then(response => response.json())
+		// 	.then(data => {
+		// 		this.setState({ series: data, search: this.SearchInput.value });
+		// 	})
+		// 	.then(this.filter(this.state.filter))
+		// 	.then(
+		// 		setTimeout(() => {
+		// 			this.setState({ loading: '' });
+		// 		}, 1000)
+		// 	);
 	}
 
 	render() {
-		const { series, loading, search } = this.state;
+		const { search } = this.state;
+		const { series } = this.props;
+
+		if (!series) {
+			return <div className="results-container is-loading"></div>;
+		}
 
 		return (
 			<div>
@@ -159,7 +173,7 @@ class Results extends Component {
 					</button>
 				</form>
 
-				<div className={`results-container ${loading}`}>
+				<div className={`results-container`}>
 					{series.map(serie => (
 						<SerieThumbnail serie={serie} key={serie.show.id} />
 					))}
@@ -169,4 +183,9 @@ class Results extends Component {
 	}
 }
 
-export default connect(state => ({}), {})(Results);
+export default connect(
+	state => ({
+		series: state.series,
+	}),
+	{ fetchSeries }
+)(Results);

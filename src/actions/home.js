@@ -1,4 +1,5 @@
 export const HOME_SLIDER = 'HOME_SLIDER';
+export const SERIES_COMPLETE = 'SERIES_COMPLETE';
 export const SERIE_COMPLETE = 'SERIE_COMPLETE';
 export const EPISODES_COMPLETE = 'EPISODES_COMPLETE';
 
@@ -29,10 +30,22 @@ export function fetchEpisodes(serieId) {
 }
 
 // LVL 1 request
-export function searchSeries(search) {
-	fetch('http://api.tvmaze.com/search/shows?q=' + search)
-		.then(response => response.json())
-		.then(data => {
-			return data;
-		});
+// export function searchSeries(search) {
+// 	fetch('http://api.tvmaze.com/search/shows?q=' + search)
+// 		.then(response => response.json())
+// 		.then(data => {
+// 			return data;
+// 		});
+// }
+
+export function fetchSeries(search) {
+	return (dispatch, getState) =>
+		fetch('http://api.tvmaze.com/search/shows?q=' + search)
+			.then(response => response.json())
+			.then(data => {
+				dispatch({
+					type: SERIES_COMPLETE,
+					series: data,
+				});
+			});
 }
