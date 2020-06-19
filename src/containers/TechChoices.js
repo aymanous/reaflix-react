@@ -9,11 +9,11 @@ class TechChoices extends Component {
 				<p>
 					Concernant le coeur même de l'application nous avons décidé de partir
 					de la correction du TP REACTUBE afin d'utiliser la même architecture.
-					De ce fait, le store choisit est exactement le même que celui des
+					De ce fait, le store choisi est exactement le même que celui des
 					derniers TP.
 				</p>
 				<p>
-					Nous avons donc utiliser Redux pour centraliser les données, les
+					Nous avons donc utilisé Redux pour centraliser les données, les
 					actions et permettre l'utilisation du store.
 				</p>
 				<p>
