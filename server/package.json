@@ -10,7 +10,7 @@
   "author": "Thomas Fritsch <thomas@uidlt.fr> (https://uidlt.fr)",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "formidable": "^1.2.2",
     "sqlite3": "^4.2.0"
   }
